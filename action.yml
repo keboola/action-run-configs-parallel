@@ -12,7 +12,7 @@ inputs:
     description: 'Component tag to run.'
     required: true
   configs:
-    description: 'Comma separated list of the config IDs.'
+    description: 'Space separated list of the config IDs.'
     required: true
 runs:
   using: 'docker'
