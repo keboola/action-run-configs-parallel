@@ -1,0 +1,24 @@
+name: 'Run KBC configs'
+description: 'Run KBC configs in parallel and verify that all were successful.'
+author: 'Keboola'
+inputs:
+  token:
+    description: 'Storage API token.'
+    required: true
+  componentId:
+    description: 'Component ID.'
+    required: true
+  tag:
+    description: 'Component tag to run.'
+    required: true
+  configs:
+    description: 'Space separated list of the config IDs.'
+    required: true
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.token }}
+    - ${{ inputs.componentId }}
+    - ${{ inputs.tag }}
+    - ${{ inputs.configs }}
