@@ -5,6 +5,9 @@ inputs:
   token:
     description: 'Storage API token.'
     required: true
+  componentId:
+    description: 'Component ID.'
+    required: true
   tag:
     description: 'Component tag to run.'
     required: true
@@ -16,5 +19,6 @@ runs:
   image: 'Dockerfile'
   args:
     - ${{ inputs.token }}
+    - ${{ inputs.componentId }}
     - ${{ inputs.tag }}
     - ${{ inputs.configs }}
