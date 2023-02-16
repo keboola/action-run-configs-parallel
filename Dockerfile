@@ -1,7 +1,10 @@
 FROM docker
 
-RUN wget https://github.com/keboola/keboola-as-code/releases/download/v2.12.1/keboola-cli_2.12.1_linux_amd64.apk
-RUN apk add --allow-untrusted ./keboola-cli_2.12.1_linux_amd64.apk
+ARG CLI_VERSION="2.12.1"
+
+RUN echo "https://cli-dist.keboola.com/apk" | tee -a /etc/apk/repositories
+RUN wget -P /etc/apk/keys/ https://cli-dist.keboola.com/apk/keboola.rsa.pub
+RUN apk update && apk add keboola-cli=$CLI_VERSION
 
 COPY entrypoint.sh /entrypoint.sh
 
