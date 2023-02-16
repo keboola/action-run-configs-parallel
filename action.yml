@@ -2,6 +2,10 @@ name: 'Run KBC configs'
 description: 'Run KBC configs in parallel and verify that all were successful.'
 author: 'Keboola'
 inputs:
+  host:
+    description: 'Storage API host.'
+    required: false
+    default: 'connection.keboola.com'
   token:
     description: 'Storage API token.'
     required: true
@@ -18,6 +22,7 @@ runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
+    - ${{ inputs.host }}
     - ${{ inputs.token }}
     - ${{ inputs.componentId }}
     - ${{ inputs.tag }}
