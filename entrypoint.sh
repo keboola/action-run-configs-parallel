@@ -16,4 +16,8 @@ do
   JOBS="${JOBS} $COMPONENT/$id@$TAG"
 done
 
-kbc remote job run --storage-api-host $HOST --storage-api-token $TOKEN $JOBS
+if [ -z "$JOBS" ]; then
+  echo "No config specified."
+else
+  kbc remote job run --storage-api-host "$HOST" --storage-api-token "$TOKEN" $JOBS
+fi
