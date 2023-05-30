@@ -11,7 +11,8 @@ HOST=$1
 TOKEN=$2
 COMPONENT=$3
 TAG=$4
-for id in $5
+TIMEOUT=$5
+for id in $6
 do
   JOBS="${JOBS} $COMPONENT/$id@$TAG"
 done
@@ -19,5 +20,5 @@ done
 if [ -z "$JOBS" ]; then
   echo "No config specified."
 else
-  kbc remote job run --storage-api-host "$HOST" --storage-api-token "$TOKEN" $JOBS
+  kbc remote job run --storage-api-host "$HOST" --storage-api-token "$TOKEN" --timeout "$TIMEOUT" $JOBS
 fi
