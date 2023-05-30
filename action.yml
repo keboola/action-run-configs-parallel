@@ -18,6 +18,10 @@ inputs:
   configs:
     description: 'Space separated list of the config IDs.'
     required: true
+  timeout:
+    description: 'How long to wait for the job to finish. Specified as a sequence of decimal numbers with unit suffixes.'
+    required: false
+    default: '5m'
 runs:
   using: 'docker'
   image: 'Dockerfile'
@@ -26,4 +30,5 @@ runs:
     - ${{ inputs.token }}
     - ${{ inputs.componentId }}
     - ${{ inputs.tag }}
+    - ${{ inputs.timeout }}
     - ${{ inputs.configs }}
