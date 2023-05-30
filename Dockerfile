@@ -1,6 +1,6 @@
 FROM docker
 
-ARG CLI_VERSION="2.12.2"
+ARG CLI_VERSION="2.16.4"
 
 RUN echo "https://cli-dist.keboola.com/apk" | tee -a /etc/apk/repositories
 RUN wget -P /etc/apk/keys/ https://cli-dist.keboola.com/apk/keboola.rsa.pub
